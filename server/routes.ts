@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { contactFormSchema } from "@shared/schema";
+import { insertContactSubmissionSchema } from "@shared/schema";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -12,7 +12,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {
-      const validatedData = contactFormSchema.parse(req.body);
+      const validatedData = insertContactSubmissionSchema.parse(req.body);
       
       // Store the contact form submission
       const submission = await storage.createContactSubmission(validatedData);
