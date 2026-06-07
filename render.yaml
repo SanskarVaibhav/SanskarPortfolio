@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sanskar-portfolio
+    env: node
+    plan: free
+    # Runs your combined Vite + esbuild build script
+    buildCommand: npm install && npm run build
+    # Executes the generated bundled production server
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
